@@ -1,0 +1,114 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\App;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class AppSeeder extends Seeder
+{
+    public function run(): void
+    {
+        $app01 = new App();
+        $app01->app_id = 0;
+        $app01->name = 'DGala';
+        $app01->icon = '';
+        $app01->link = '';
+        $app01->type = 'A';
+        $app01->ind_level = 0;
+        $app01->ind_order = 0;
+        $app01->ind_status = 1;
+        $app01->save();
+        $app02 = new App();
+        $app02->app_id = 1;
+        $app02->name = 'Dashboard';
+        $app02->icon = 'fas fa-grip';
+        $app02->link = 'dashboard';
+        $app02->type = 'I';
+        $app02->ind_level = 1;
+        $app02->ind_order = 1;
+        $app02->ind_status = 1;
+        $app02->save();
+        $app03 = new App();
+        $app03->app_id = 1;
+        $app03->name = 'Categorías';
+        $app03->icon = 'fas fa-list';
+        $app03->link = 'category';
+        $app03->type = 'I';
+        $app03->ind_level = 1;
+        $app03->ind_order = 2;
+        $app03->ind_status = 1;
+        $app03->save();
+        $app04 = new App();
+        $app04->app_id = 1;
+        $app04->name = 'Productos';
+        $app04->icon = 'fab fa-product-hunt';
+        $app04->link = 'products';
+        $app04->type = 'I';
+        $app04->ind_level = 1;
+        $app04->ind_order = 3;
+        $app04->ind_status = 1;
+        $app04->save();
+        $app05 = new App();
+        $app05->app_id = 1;
+        $app05->name = 'Clientes';
+        $app05->icon = 'fas fa-users-line';
+        $app05->link = 'customers';
+        $app05->type = 'I';
+        $app05->ind_level = 1;
+        $app05->ind_order = 4;
+        $app05->ind_status = 1;
+        $app05->save();
+        $app06 = new App();
+        $app06->app_id = 1;
+        $app06->name = 'Ventas';
+        $app06->icon = 'fas fa-money-check-dollar';
+        $app06->link = 'sales';
+        $app06->type = 'I';
+        $app06->ind_level = 1;
+        $app06->ind_order = 5;
+        $app06->ind_status = 1;
+        $app06->save();
+        $app07 = new App();
+        $app07->app_id = 1;
+        $app07->name = 'Reportes';
+        $app07->icon = 'fas fa-chart-line';
+        $app07->link = 'reports';
+        $app07->type = 'I';
+        $app07->ind_level = 1;
+        $app07->ind_order = 6;
+        $app07->ind_status = 1;
+        $app07->save();
+        $app08 = new App();
+        $app08->app_id = 1;
+        $app08->name = 'Usuarios';
+        $app08->icon = 'fas fa-users';
+        $app08->link = 'users';
+        $app08->type = 'I';
+        $app08->ind_level = 1;
+        $app08->ind_order = 7;
+        $app08->ind_status = 1;
+        $app08->save();
+        $app09 = new App();
+        $app09->app_id = 1;
+        $app09->name = 'Configuración';
+        $app09->icon = 'fas fa-gears';
+        $app09->link = 'tools';
+        $app09->type = 'I';
+        $app09->ind_level = 1;
+        $app09->ind_order = 8;
+        $app09->ind_status = 1;
+        $app09->save();
+        $app10 = new App();
+        $app10->app_id = 1;
+        $app10->name = 'Ayuda';
+        $app10->icon = 'fas fa-info';
+        $app10->link = 'helps';
+        $app10->type = 'I';
+        $app10->ind_level = 1;
+        $app10->ind_order = 9;
+        $app10->ind_status = 1;
+        $app10->save();
+    }
+}
