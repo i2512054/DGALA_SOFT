@@ -4,5 +4,5 @@
 
 
 ## Autor
-| [<sub>ESCOBEDO PUMACAYO, PIER JONATHAN</sub>] | [<sub>HUAMÁN MORIANO, ERICK OLIVER</sub>] | [<sub>JOSÉ HUGO SARAVIA CHÁVEZ</sub>] | [<sub>YUCRA SARAVIA, WILLIAMS FREDY</sub>] |
+| <sub>ESCOBEDO PUMACAYO, PIER JONATHAN</sub> | <sub>HUAMÁN MORIANO, ERICK OLIVER</sub> | <sub>JOSÉ HUGO SARAVIA CHÁVEZ</sub> | <sub>YUCRA SARAVIA, WILLIAMS FREDY</sub> |
 | :---: | :---: | :---: | :---: |
