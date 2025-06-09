@@ -4,5 +4,5 @@
 
 
 ## Autor
-| [<img src="https://avatars.githubusercontent.com/u/213133340?v=4" width=115><br><sub>José Hugo Saravia Chávez</sub>](https://github.com/i2512054/DAW-IDL1) |
-| :---: |
+| [<sub>ESCOBEDO PUMACAYO, PIER JONATHAN</sub>] | [<sub>HUAMÁN MORIANO, ERICK OLIVER</sub>] | [<sub>JOSÉ HUGO SARAVIA CHÁVEZ</sub>] | [<sub>YUCRA SARAVIA, WILLIAMS FREDY</sub>] |
+| :---: | :---: | :---: | :---: |
