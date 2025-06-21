@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('name', length: 150);
             $table->string('description', length: 255);
             $table->string('link_image', length: 255);
+            $table->tinyInteger('ind_level');
             $table->boolean('ind_status');
             $table->timestamps();
         });
