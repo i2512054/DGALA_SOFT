@@ -21,6 +21,7 @@ return new class extends Migration
             $table->smallInteger('quantity');
             $table->smallInteger('min_stock');
             $table->smallInteger('max_stock');
+            $table->string('link_image', length: 255);
             $table->boolean('ind_status');
             $table->timestamps();
         });

@@ -33,10 +33,23 @@ Route::put('/products/{id}', [ProductController::class, 'update']);
 Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 //RUTAS PARA EL CONTROL DE CLIENTES
 Route::get('/customers', [CustomerController::class, 'index']);
+Route::get('/customers/add', [CustomerController::class, 'add']);
+Route::post('/customers', [CustomerController::class, 'store']);
+Route::get('/customers/{id}/edit', [CustomerController::class, 'edit']);
+Route::put('/customers/{id}', [CustomerController::class, 'update']);
+Route::delete('/customers/{id}', [CustomerController::class, 'destroy']);
+
+//RUTAS PARA EL CONTROL DE VENTAS
 Route::get('/sales', [SaleController::class, 'index']);
+
+//RUTAS PARA EL CONTROL DE REPORTES
 Route::get('/reports', [ReportController::class, 'index']);
+
+//RUTAS PARA EL CONTROL DE CUENTAS DE USUARIO
 Route::get('/accounts', [AccountController::class, 'index']);
 Route::post('/account/login', [AccountController::class, 'login']);
+
+//RUTAS PARA EL CONTROL DE CONFIGURACIONES
 Route::get('/tools', [ToolController::class, 'index']);
 
 Route::get('/apps', function() {

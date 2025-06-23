@@ -4,6 +4,7 @@
 @section('content')
 <form action="/categories" method="POST" enctype="multipart/form-data">
     @csrf
+    <input type="hidden" id="ind_level" name="ind_level" value="1" />
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -23,10 +24,9 @@
                         <div class="row">
                             <div class="mb-3 col-md-6">
                                 <label class="form-label">Categoría</label>
-                                <select id="category_id" name="category_id"  class="default-select form-control wide">
-									<option value="1">Categoría DGALA</option
+                                <select id="category_id" name="category_id" onchange="onSetIndNivel();" class="default-select form-control wide">
                                     @foreach($categoriesParent as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        <option ind-level="{{ $item->ind_level }}" value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -70,6 +70,10 @@
         let file = input.files[0];
         let objectURL = URL.createObjectURL(file);
         imgPreview.src = objectURL;
+    }
+    function onSetIndNivel() {
+        let indLevel = document.querySelector('#category_id option:checked').getAttribute('ind-level');
+        document.querySelector('#ind_level').value = parseInt(indLevel) +  1;
     }
 </script>
 @endsection

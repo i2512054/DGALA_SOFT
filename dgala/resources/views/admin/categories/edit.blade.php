@@ -5,6 +5,7 @@
 <form action="/categories/{{ $category->id }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
+    <input type="hidden" id="ind_level" name="ind_level" value="{{ $category->ind_level }}" />
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -24,13 +25,12 @@
                         <div class="row">
                             <div class="mb-3 col-md-6">
                                 <label class="form-label">Categoría</label>
-                                <select id="category_id" name="category_id"  class="default-select form-control wide">
-									<option value="1">Categoría DGALA</option
+                                <select id="category_id" name="category_id" onchange="onSetIndNivel();" class="default-select form-control wide">
                                     @foreach($categoriesParent as $item)
                                         @if($category->id === $item->id)
-                                            <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
+                                            <option ind-level="{{ $item->ind_level }}" value="{{ $item->id }}" selected>{{ $item->name }}</option>
                                         @else
-                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            <option ind-level="{{ $item->ind_level }}" value="{{ $item->id }}">{{ $item->name }}</option>
                                         @endif
                                     @endforeach
                                 </select>
@@ -74,6 +74,10 @@
         let file = input.files[0];
         let objectURL = URL.createObjectURL(file);
         imgPreview.src = objectURL;
+    }
+    function onSetIndNivel() {
+        let indLevel = document.querySelector('#category_id option:checked').getAttribute('ind-level');
+        document.querySelector('#ind_level').value = parseInt(indLevel) + 1;
     }
 </script>
 @endsection

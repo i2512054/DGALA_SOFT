@@ -20,7 +20,10 @@ class CategoryController extends Controller
         return view('admin.categories.index', compact('categories'));
     }
     function add() {//METODO PARA INVOCAR A LA VISTA DE CREAR CATEGORIA
-        $categoriesParent = DB::table('categories')->where('category_id', '=', 1)->get();
+        $categoriesParent = DB::table('categories')
+            ->where('category_id', '=', 0)
+            ->orWhere('category_id', '=', 1)
+            ->get();
         return view('admin.categories.add', compact('categoriesParent'));
     }
     function store(Request $request) {//METODO PARA GENERAR EL REGISTRO DE LA CATEGORIA
@@ -29,14 +32,17 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->description = $request->description;
         $category->link_image = "";
-        $category->ind_level = 1;
+        $category->ind_level = $request->ind_level;
         $category->ind_status = 1;
         if($request->hasFile('image')) { $category->link_image = Storage::put('categories', $request->image); }
         $category->save();
         return redirect('/categories');
     }
     function edit($id) {//METODO PARA INVOCAR A LA VISTA DE EDITAR CATEGORIA
-        $categoriesParent = DB::table('categories')->where('category_id', '=', 1)->get();
+        $categoriesParent = DB::table('categories')
+            ->where('category_id', '=', 0)
+            ->orWhere('category_id', '=', 1)
+            ->get();
         $category = Category::find($id);
         return view('admin.categories.edit', compact('category', 'categoriesParent'));
     }
@@ -45,8 +51,8 @@ class CategoryController extends Controller
         $category->category_id = $request->category_id;
         $category->name = $request->name;
         $category->description = $request->description;
-        $category->link_image = "";
-        $category->ind_level = 1;
+        $category->link_image = $request->link_image;
+        $category->ind_level = $request->ind_level;
         $category->ind_status = 1;
         if($request->hasFile('image')) {
             if($category->link_image) { Storage::delete($category->link_image); }
@@ -55,7 +61,7 @@ class CategoryController extends Controller
         $category->save();
         return redirect('/categories');
     }
-    function destroy($id) {//METODO ELIMINAR UNA CATEGORIA SELECCIONADA
+    function destroy($id) {//METODO PARA ELIMINAR UNA CATEGORIA SELECCIONADA
         $category = Category::find($id);
         if($category->link_image) { Storage::delete($category->link_image); }
         $category->delete();

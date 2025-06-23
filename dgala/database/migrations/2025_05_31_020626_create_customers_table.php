@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->integerIncrements('id');
-            $table->tinyInteger('ddocument_type_id');
+            $table->tinyInteger('document_type_id');
             $table->string('document_number', length: 25);
             $table->string('first_name', length: 80);
             $table->string('middle_name', length: 80);
