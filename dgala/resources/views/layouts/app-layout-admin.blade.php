@@ -10,6 +10,7 @@
         <title>DGALA: Administrador</title>
 	    <!-- FAVICONS ICON -->
 	    <link rel="shortcut icon" type="image/png" href="../../assets/resources/favicon.svg">
+        <link rel="stylesheet" href="../../assets/vendor/select2/css/select2.min.css">
 	    <link href="../../assets/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
 	    <link href="../../assets/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
 	    <link rel="stylesheet" href="../../assets/vendor/nouislider/nouislider.min.css">
@@ -117,6 +118,7 @@
 <script src="../../assets/vendor/global/global.min.js"></script>
 <script src="../../assets/vendor/chart.js/Chart.bundle.min.js"></script>
 <script src="../../assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+<script src="../../assets/vendor/select2/js/select2.full.min.js"></script>
 <!-- Apex Chart -->
 <script src="../../assets/vendor/apexchart/apexchart.js"></script>
 <script src="../../assets/vendor/chart.js/Chart.bundle.min.js"></script>
@@ -149,6 +151,7 @@
     }
     jQuery(window).on('load',function(){
         setTimeout(function(){ cardsCenter(); }, 1000); 
+        $('#department_code, #province_code, #district_code').select2();
         //onChangeThemeDGala('dark');
     });
 </script>

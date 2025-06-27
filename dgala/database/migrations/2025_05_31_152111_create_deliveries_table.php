@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('invoice_id', length: 10);
             $table->tinyInteger('document_type_id');
             $table->tinyInteger('delivery_type_id');
-            $table->tinyInteger('ubigeo_id');
+            $table->smallInteger('ubigeo_id');
             $table->string('receive', length: 150);
             $table->string('document_number', length: 25);
             $table->string('address', length: 255);

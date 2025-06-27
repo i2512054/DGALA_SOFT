@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             AppSeeder::class,
             RoleSeeder::class,
             ProfileSeeder::class,
-            AccountSeeder::class
+            AccountSeeder::class,
+            UbigeoSeeder::class
         ]);
     }
 }

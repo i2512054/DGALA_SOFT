@@ -66,7 +66,11 @@
                                         <td>{{ $item->quantity }}</td>
                                         <td>{{ $item->min_stock }}</td>
                                         <td>{{ $item->max_stock }}</td>
-                                        <td>{{ $item->ind_status }}</td>
+                                        @if($item->ind_status === 1)
+                                            <td><span class="btn bgl-success text-success fs-18 font-w600">Si</span></td>
+                                        @else
+                                            <td><span class="btn bgl-danger text-danger fs-18 font-w600">No</span></td>
+                                        @endif
                                         <td>{{ $item->created_at }}</td>
                                         <td>{{ $item->updated_at }}</td>
                                     </tr>

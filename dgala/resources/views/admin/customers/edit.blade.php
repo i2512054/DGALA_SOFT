@@ -5,6 +5,7 @@
 <form action="/customers/{{ $customer->id }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
+    <input type="hidden" name="ubigeo_id" id="ubigeo_id" value="{{ $customer->ubigeo_id }}" />
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -66,6 +67,47 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="mb-3 col-md-4">
+                                    <label class="form-label">Departamento</label>
+                                    <select id="department_code" name="department_code" onchange="loadProvince();">
+                                        <option>Seleccione Departamento ...</option>
+                                        @foreach ($departments as $item)
+                                            @if($item->department_code === $ubigeo->department_code)
+                                                <option value="{{ $item->department_code }}" selected>{{ $item->description }}</option>
+                                            @else
+                                                <option value="{{ $item->department_code }}">{{ $item->description }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3 col-md-4">
+                                    <label class="form-label">Provincia</label>
+                                    <select id="province_code" name="province_code" onchange="loadDistrict();">
+                                        <option>Seleccione Provincia ...</option>
+                                        @foreach ($provinces as $item)
+                                            @if($item->province_code === $ubigeo->province_code)
+                                                <option value="{{ $item->province_code }}" selected>{{ $item->description }}</option>
+                                            @else
+                                                <option value="{{ $item->province_code }}">{{ $item->description }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3 col-md-4">
+                                    <label class="form-label">Distrito</label>
+                                    <select id="district_code" name="district_code" onchange="onSelUbigeo();">
+                                        <option>Seleccione Distrito ...</option>
+                                        @foreach ($districts as $item)
+                                            @if($item->district_code === $ubigeo->district_code)
+                                                <option value="{{ $item->id }}" selected>{{ $item->description }}</option>
+                                            @else
+                                                <option value="{{ $item->id }}">{{ $item->description }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
                                 <div class="mb-3 col-md-12">
                                     <label class="form-label">Domicilio</label>
                                     <input id="address" name="address" type="text" class="form-control" value="{{ $customer->address }}" />
@@ -88,4 +130,37 @@
         </div>
     </div>
 </form>
+<script>
+    async function loadProvince() {
+        let departmentCode = $('#department_code').val();
+        const response = await fetch('/ubigeos/provinces/' + departmentCode, {
+            method: "GET"
+        });
+        let json = await response.json();
+        $('#province_code, #district_code').html("");
+        $('#province_code').append("<option selected>Seleccione Provincia ...</option>");
+        for(const item of json) {
+            let sHTML = "<option value='" + item.province_code + "'>" + item.description + "</option>";
+            $('#province_code').append(sHTML);
+        }
+    }
+    async function loadDistrict() {
+        let departmentCode = $('#department_code').val();
+        let provinceCode = $('#province_code').val();
+        const response = await fetch('/ubigeos/districts/' + departmentCode + '/' + provinceCode, {
+            method: "GET"
+        });
+        let json = await response.json();
+        $('#district_code').html("");
+        $('#district_code').append("<option selected>Seleccione Distrito ...</option>");
+        for(const item of json) {
+            let sHTML = "<option value='" + item.id + "'>" + item.description + "</option>";
+            $('#district_code').append(sHTML);
+        }
+    }
+    function onSelUbigeo() {
+        let ubigeoId = $('#district_code').val();
+        $('#ubigeo_id').val(ubigeoId);
+    }
+</script>
 @endsection

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
@@ -8,7 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\ToolController;
-use App\Models\App;
+use App\Http\Controllers\UbigeoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -52,7 +53,10 @@ Route::post('/account/login', [AccountController::class, 'login']);
 //RUTAS PARA EL CONTROL DE CONFIGURACIONES
 Route::get('/tools', [ToolController::class, 'index']);
 
-Route::get('/apps', function() {
-    $apps = App::all();
-    return $apps;
-});
+//RUTAS PARA EL CONTROL DE APLICACIONES
+Route::get('/apps', [AppController::class, 'index']);
+
+//RUTAS PARA EL CONTROL DE UBIGEOS: DEPARTAMENTOS, PROVINCIAS Y DISTRITOS
+Route::get('/ubigeos/departments', [UbigeoController::class, 'departments']);
+Route::get('/ubigeos/provinces/{department_code}', [UbigeoController::class, 'provinces']);
+Route::get('/ubigeos/districts/{department_code}/{province_code}', [UbigeoController::class, 'districts']);
