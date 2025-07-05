@@ -28,6 +28,10 @@
                                 <tr>
                                     <th></th>
                                     <th></th>
+                                    <th width="100">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </th>
                                     <th>Categoría</th>
                                     <th>Nombre</th>
                                     <th>Descripción</th>
@@ -54,6 +58,9 @@
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger bg-gradient"><i class="fas fa-trash"></i></button>
                                             </form>
+                                        </td>
+                                        <td>
+                                            <img class="w-100 ratio ratio-16x9 object-fit-cover" src="{{ $item->link_image == '' ? '../../assets/img/icon-photo.png' : Storage::url($item->link_image) }}" />
                                         </td>
                                         <td>{{ $item->category_name }}</td>
                                         <td>{{ $item->name }}</td>

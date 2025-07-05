@@ -51,10 +51,10 @@ class CategoryController extends Controller
         $category->category_id = $request->category_id;
         $category->name = $request->name;
         $category->description = $request->description;
-        $category->link_image = $request->link_image;
         $category->ind_level = $request->ind_level;
         $category->ind_status = 1;
         if($request->hasFile('image')) {
+            $category->link_image = $request->link_image;
             if($category->link_image) { Storage::delete($category->link_image); }
             $category->link_image = Storage::put('categories', $request->image);
         }
@@ -63,8 +63,10 @@ class CategoryController extends Controller
     }
     function destroy($id) {//METODO PARA ELIMINAR UNA CATEGORIA SELECCIONADA
         $category = Category::find($id);
-        if($category->link_image) { Storage::delete($category->link_image); }
-        $category->delete();
+        //if($category->link_image) { Storage::delete($category->link_image); }
+        //$category->delete();
+        $category->ind_status = 0;
+        $category->save();
         return redirect('/categories');
     }
 }

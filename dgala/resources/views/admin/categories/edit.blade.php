@@ -27,7 +27,7 @@
                                 <label class="form-label">Categoría</label>
                                 <select id="category_id" name="category_id" onchange="onSetIndNivel();" class="default-select form-control wide">
                                     @foreach($categoriesParent as $item)
-                                        @if($category->id === $item->id)
+                                        @if($category->category_id === $item->id)
                                             <option ind-level="{{ $item->ind_level }}" value="{{ $item->id }}" selected>{{ $item->name }}</option>
                                         @else
                                             <option ind-level="{{ $item->ind_level }}" value="{{ $item->id }}">{{ $item->name }}</option>

@@ -76,14 +76,16 @@ class CustomerController extends Controller
         $customer->email = $request->email;
         $customer->phone_number = $request->phone_number;
         $customer->address = $request->address;
-        $customer->access = $request->access;
+        //$customer->access = $request->access;
         $customer->ind_status = 1;
         $customer->save();
         return redirect('/customers');
     }
     function destroy($id) {//METODO PARA ELIMINAR UN CLIENTE SELECCIONADO
         $customer = Customer::find($id);
-        $customer->delete();
+        //$customer->delete();
+        $customer->ind_status = 0;
+        $customer->save();
         return redirect('/customers');
     }
 }

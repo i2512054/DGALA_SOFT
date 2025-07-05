@@ -65,9 +65,9 @@ class ProductController extends Controller
         $product->quantity = $request->quantity;
         $product->min_stock = $request->min_stock;
         $product->max_stock = $request->max_stock;
-        $product->link_image = $request->link_image;
         $product->ind_status = 1;
         if($request->hasFile('image')) {
+            $product->link_image = $request->link_image;
             if($product->link_image) { Storage::delete($product->link_image); }
             $product->link_image = Storage::put('products', $request->image);
         }
@@ -76,8 +76,10 @@ class ProductController extends Controller
     }
     function destroy($id) {//METODO PARA ELIMINAR UN PRODUCTO SELECCIONADO
         $product = Product::find($id);
-        if($product->link_image) { Storage::delete($product->link_image); }
-        $product->delete();
+        //if($product->link_image) { Storage::delete($product->link_image); }
+        //$product->delete();
+        $product->ind_status = 0;
+        $product->save();
         return redirect('/products');
     }
 }

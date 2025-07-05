@@ -66,10 +66,15 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16"><path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"/></svg>
 										<span class="ms-2">Oscuro</span>
 									</a>
-									<a href="/" class="dropdown-item ai-icon">
-										<svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-										<span class="ms-2">Cerrar Sesión</span>
-									</a>
+                                    <form action="/logout" method="POST">
+                                        @csrf
+                                        <button type="submit" class="border border-0">
+                                            <a href="#" class="dropdown-item ai-icon bg-black">
+                                                <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                                                <span class="ms-2">Cerrar Sesión</span>
+                                            </a>
+                                        </button>
+                                    </form>
 								</div>
 							</li>
                         </ul>
@@ -88,7 +93,7 @@
                         <li><a href="/customers" class="" aria-expanded="false"><i class="fas fa-users"></i><span class="nav-text">Clientes</span></a></li>
                         <li><a href="/sales" class="" aria-expanded="false"><i class="fas fa-file-invoice-dollar"></i><span class="nav-text">Ventas</span></a></li>
                         <li><a href="/reports" class="" aria-expanded="false"><i class="fas fa-chart-line"></i><span class="nav-text">Reportes</span></a></li>
-                        <li><a href="/accounts" class="" aria-expanded="false"><i class="fas fa-user"></i><span class="nav-text">Usuarios</span></a></li>
+                        <li><a href="/users" class="" aria-expanded="false"><i class="fas fa-user"></i><span class="nav-text">Usuarios</span></a></li>
                         <li><a href="/tools" class="" aria-expanded="false"><i class="fas fa-server"></i><span class="nav-text">Configuración</span></a></li>
                     </ul>
                 </div>

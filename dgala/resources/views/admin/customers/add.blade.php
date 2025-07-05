@@ -98,6 +98,10 @@
                                     <label class="form-label">Repetir Contraseña</label>
                                     <input id="access_repeat" name="access_repeat" type="password" class="form-control" />
                                 </div>
+                                <div class="mb-3 col-md-4">
+                                    <br />
+                                    <button type="button" class="btn btn-primary bg-gradient" onclick="generatePassword();"><i class="fas fa-key me-3"></i>Generar Contraseña</button>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -137,6 +141,34 @@
     function onSelUbigeo() {
         let ubigeoId = $('#district_code').val();
         $('#ubigeo_id').val(ubigeoId);
+    }
+    var Password = {
+        _pattern : /[a-zA-Z0-9_\-\+\.]/,
+        _getRandomByte : function() {
+            if(window.crypto && window.crypto.getRandomValues) {
+                var result = new Uint8Array(1);
+                window.crypto.getRandomValues(result);
+                return result[0];
+            } else if(window.msCrypto && window.msCrypto.getRandomValues) {
+                var result = new Uint8Array(1);
+                window.msCrypto.getRandomValues(result);
+                return result[0];
+            } else {
+                return Math.floor(Math.random() * 256);
+            }
+        },
+        generate : function(length) {
+            return Array.apply(null, {'length': length}).map(function() {
+                var result;
+                while(true) {
+                    result = String.fromCharCode(this._getRandomByte());
+                    if(this._pattern.test(result)) { return result; }
+                }
+            }, this).join('');
+        }
+    };
+    function generatePassword() {
+        $('#access, #access_repeat').val(Password.generate(16));
     }
 </script>
 @endsection

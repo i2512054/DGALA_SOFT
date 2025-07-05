@@ -113,7 +113,7 @@
                                     <input id="address" name="address" type="text" class="form-control" value="{{ $customer->address }}" />
                                 </div>
                             </div>
-                            <div class="row">
+                            <!--<div class="row">
                                 <div class="mb-3 col-md-4">
                                     <label class="form-label">Contraseña</label>
                                     <input id="access" name="access" type="password" class="form-control" value="{{ $customer->access }}" />
@@ -122,7 +122,7 @@
                                     <label class="form-label">Repetir Contraseña</label>
                                     <input id="access_repeat" name="access_repeat" type="password" class="form-control" value="{{ $customer->access }}" />
                                 </div>
-                            </div>
+                            </div>-->
                         </form>
                     </div>
                 </div>
