@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DGALAController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SaleController;
@@ -14,9 +15,15 @@ use App\Http\Controllers\UbigeoController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('index');
-});
+//RUTAS PARA EL SITIO WEB D'GALA
+Route::get('/', [DGALAController::class, 'index']);
+Route::get('/aboutus', [DGALAController::class, 'aboutUs']);
+Route::get('/catalog', [DGALAController::class, 'catalog']);
+Route::get('/service', [DGALAController::class, 'service']);
+Route::get('/contactus', [DGALAController::class, 'contactUs']);
+Route::get('/register', [DGALAController::class, 'register']);
+Route::get('/signin', [DGALAController::class, 'signIn']);
+Route::get('/shopping', [DGALAController::class, 'shopping']);
 
 //RUTAS PARA LA AUTENTICACIÓN DEL SISTEMA
 Route::get('/login', [AuthController::class, 'adminLogin'])->name('login');

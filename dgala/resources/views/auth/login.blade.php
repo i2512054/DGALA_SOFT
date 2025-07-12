@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="assets/favicon.svg" />
         <title>DGALA: Administrador</title>
         <style>
-            body { background-color: #000000ea; }
+            body { background-color: #000000; }
             input::placeholder { color: rgb(168, 168, 168) !important; }
             .button-title-login { background-color: #AA8447; }
             .div-border-radius-4 { border-radius: 4px; }
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="d-grid">
-                                        <button class="btn text-light button-title-login" type="submit"><b>Iniciar Sesión</b></button>
+                                        <button class="btn btn-dark text-light button-title-login" type="submit"><b>Iniciar Sesión</b></button>
                                     </div>
                                 </div>
                                 <div class="col-12 text-center">
