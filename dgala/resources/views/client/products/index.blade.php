@@ -1,4 +1,4 @@
-@extends('layouts.app-layout-client')
+@extends('layouts.client.app-layout-website')
 @section('content')
     <section>
         <article>

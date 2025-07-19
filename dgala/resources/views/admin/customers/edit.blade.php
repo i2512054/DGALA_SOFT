@@ -1,8 +1,8 @@
-@extends('layouts.app-layout-admin')
+@extends('layouts.admin.app-layout-admin')
 @section('role', session('role_name'))
 @section('title', 'Editar Cliente')
 @section('content')
-<form action="/customers/{{ $customer->id }}" method="POST" enctype="multipart/form-data">
+<form action="/admin/customers/{{ $customer->id }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <input type="hidden" name="ubigeo_id" id="ubigeo_id" value="{{ $customer->ubigeo_id }}" />
@@ -10,7 +10,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <a href="/customers" type="button" class="btn btn-danger bg-gradient me-4"><i class="fas fa-undo me-2"></i>Cancelar</a>
+                    <a href="/admin/customers" type="button" class="btn btn-danger bg-gradient me-4"><i class="fas fa-undo me-2"></i>Cancelar</a>
                     <button type="submit" class="btn btn-primary bg-gradient"><i class="fas fa-save me-2"></i>Actualizar</button>
                 </div>
             </div>

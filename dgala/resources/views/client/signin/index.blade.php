@@ -1,45 +1,111 @@
-@extends('layouts.app-layout-client')
-@section('content')
-    <section>
-        <article>
-            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button style="height: 28px; border-radius: 50%; margin-right: 16px;" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active bg-black bg-gradient" aria-current="true" aria-label="Slide 1"></button>
-                    <button style="height: 28px; border-radius: 50%; margin-right: 16px;" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" class="bg-black bg-gradient" aria-label="Slide 2"></button>
-                    <button style="height: 28px; border-radius: 50%; margin-right: 16px;" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" class="bg-black bg-gradient" aria-label="Slide 3"></button>
-                    <button style="height: 28px; border-radius: 50%;" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" class="bg-black bg-gradient" aria-label="Slide 4"></button>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../assets/lib/fontawesome/css/all.css" />
+        <link rel="stylesheet" href="../../assets/lib/bootstrap/css/bootstrap.min.css" />
+        <script src="../../assets/lib/jquery/jquery-3.6.0.min.js"></script>
+        <script src="../../assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <link rel="shortcut icon" href="assets/favicon.svg" />
+        <title>DGALA: Cliente</title>
+        <style>
+            body { background-color: #000000; }
+            input::placeholder { color: rgb(168, 168, 168) !important; }
+            .button-title-login { background-color: #AA8447; }
+            .div-border-radius-4 { border-radius: 4px; }
+            .div-content-radius-all { border-bottom-left-radius: 8px; border-top-left-radius: 8px; }
+        </style>
+    </head>
+    <body>
+        <input type="hidden" id="hid-msg" value="{{ session('message') }}" />
+        <!-- INIT: MODAL MSG -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#message" style="display:none;" id="btAlertMessage"></button>
+        <div class="modal fade" id="message" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="messageLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="messageLabel">DGALA: Login</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col"><p id="pModalMessage">...</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="bt-show-message-success" type="button" class="btn btn-secondary" data-bs-target="" data-bs-dismiss="" data-bs-toggle="modal">Aceptar</button>
+                    </div>
                 </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="../../assets/img/slide_j01.jpg" class="d-block w-100" style="height: 600px;" />
-                        <div class="carousel-caption d-none d-md-block">
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../../assets/img/slide_j02.jpg" class="d-block w-100" style="height: 600px;" />
-                        <div class="carousel-caption d-none d-md-block">
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../../assets/img/slide_j03.jpg" class="d-block w-100" style="height: 600px;" />
-                        <div class="carousel-caption d-none d-md-block">
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../../assets/img/slide_j04.jpg" class="d-block w-100" style="height: 600px;" />
-                        <div class="carousel-caption d-none d-md-block">
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev"type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
-        </article>
-    </section>
-@endsection
+        </div>
+        <!-- END: MODAL MSG -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col col-md-6 m-0 p-0">
+                    <img src="../../assets/resources/fnd-client-login.jpg" class="img-fluid vh-100 object-fit-cover" />
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="row">
+                        <div class="col">
+                            <div class="text-center mb-5">
+                                <img src="../../assets/resources/favicon.svg" class="mt-5" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <div class="mb-4 mt-2 text-light"><h3>Plataforma Cliente</h3></div>
+                        </div>
+                    </div>
+                    <div class="row ms-4 me-4">
+                        <form id="frm" action="/client/login" method="POST">
+                            @csrf
+                            <div class="row gy-3 gy-md-4 overflow-hidden ps-4 pe-4">
+                                <div class="col-12">
+                                    <div class="input-group border p-1 div-border-radius-4 div-border-radius-4">
+                                        <button tabindex="-1" class="btn btn-black border-0 text-light" type="button"><i class="fas fa-envelope"></i></button>
+                                        <input type="text" class="form-control bg-black border-0 text-light" placeholder="Correo Electrónico" id="email" name="email" />
+                                    </div>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <div class="input-group border p-1 div-border-radius-4">
+                                        <button tabindex="-1" class="btn btn-black border-0 text-light" type="button"><i class="fas fa-key"></i></button>
+                                        <input type="password" class="form-control bg-black border-0 text-light" placeholder="Contraseña" id="password" name="password" />
+                                        <button tabindex="-1" class="btn btn-black border-0 text-light" type="button"><i class="fas fa-eye"></i></button>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="d-grid">
+                                        <button class="btn btn-dark text-light button-title-login" type="submit"><b>Iniciar Sesión</b></button>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="d-grid">
+                                        <a class="btn btn-dark text-light" href="/"><b>Ir a D'GALA</b></a>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <p><a href="#" class="link-underline-dark text-light">¿Has olvidado tu contraseña?</a></p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+    function onShowMessage(message, idModal) {
+        $('#pModalMessage').html(message);
+        $('#btAlertMessage').click();
+        $('#bt-show-message-success').attr("data-bs-target", idModal);
+    }
+    $(document).ready(async function() {
+        let msg = $('#hid-msg').val();
+        if(msg != '') { onShowMessage(msg, ""); }
+    });
+</script>

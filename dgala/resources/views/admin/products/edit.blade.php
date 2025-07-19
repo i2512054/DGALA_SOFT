@@ -1,15 +1,15 @@
-@extends('layouts.app-layout-admin')
+@extends('layouts.admin.app-layout-admin')
 @section('role', session('role_name'))
 @section('title', 'Editar Producto')
 @section('content')
-<form action="/products/{{ $product->id }}" method="POST" enctype="multipart/form-data">
+<form action="/admin/products/{{ $product->id }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <a href="/products" type="button" class="btn btn-danger bg-gradient me-4"><i class="fas fa-undo me-2"></i>Cancelar</a>
+                    <a href="/admin/products" type="button" class="btn btn-danger bg-gradient me-4"><i class="fas fa-undo me-2"></i>Cancelar</a>
                     <button type="submit" class="btn btn-primary bg-gradient"><i class="fas fa-save me-2"></i>Actualizar</button>
                 </div>
             </div>

@@ -1,14 +1,14 @@
-@extends('layouts.app-layout-admin')
+@extends('layouts.admin.app-layout-admin')
 @section('role', session('role_name'))
 @section('title', 'Crear Usuario')
 @section('content')
-<form action="/users" method="POST" enctype="multipart/form-data">
+<form action="/admin/users" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <a href="/users" type="button" class="btn btn-danger bg-gradient me-4"><i class="fas fa-undo me-2"></i>Cancelar</a>
+                    <a href="/admin/users" type="button" class="btn btn-danger bg-gradient me-4"><i class="fas fa-undo me-2"></i>Cancelar</a>
                     <button type="submit" class="btn btn-primary bg-gradient"><i class="fas fa-save me-2"></i>Guardar</button>
                 </div>
             </div>

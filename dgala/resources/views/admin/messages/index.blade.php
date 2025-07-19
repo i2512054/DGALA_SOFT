@@ -1,8 +1,8 @@
 @extends('layouts.admin.app-layout-admin')
 @section('role', session('role_name'))
-@section('title', 'Usuarios')
+@section('title', 'Mensajes recibidos de Contáctenos')
 @section('content')
-<div class="row">
+<!--<div class="row">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
@@ -10,53 +10,40 @@
             </div>
         </div>
     </div>
-</div>
-
+</div>-->
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    @if (count($users) == 0)
+                    @if (count($contacts) == 0)
                         <div class="text-center p-4">
                             <h3 class="text-black">No se han encontrado datos</h3>
-                            <p>Por favor, agregue un nuevo Usuario</p>
+                            <p>Por favor, espere a que los clientes envíen sus mensajes</p>
                         </div>
                     @else
                         <table class="table table-hover table-responsive-sm">
                             <thead class="thead-info">
                                 <tr>
                                     <th></th>
-                                    <th></th>
-                                    <th>Rol</th>
                                     <th>Nombre</th>
+                                    <th>Apellido</th>
                                     <th>Correo Electrónico</th>
-                                    <th>Activo</th>
+                                    <th>Teléfono</th>
+                                    <th>Mensaje</th>
                                     <th>F. Creación</th>
-                                    <th>F. Actualización</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $item)
+                                @foreach ($contacts as $item)
                                     <tr>
-                                        <td><a href="/admin/users/{{ $item->id }}/edit" class="btn btn-dark bg-gradient"><i class="fas fa-pen"></i></a></td>
-                                        <td>
-                                            <form action="/admin/users/{{ $item->id }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger bg-gradient"><i class="fas fa-trash"></i></button>
-                                            </form>
-                                        </td>
-                                        <td>{{ $item->role_name }}</td>
+                                        <td><a href="#" class="btn btn-success bg-gradient"><i class="fab fa-whatsapp"></i></a></td>
                                         <td>{{ $item->name }}</td>
+                                        <td>{{ $item->last_name }}</td>
                                         <td>{{ $item->email }}</td>
-                                        @if($item->ind_status === 1)
-                                            <td><span class="btn bgl-success text-success fs-18 font-w600">Si</span></td>
-                                        @else
-                                            <td><span class="btn bgl-danger text-danger fs-18 font-w600">No</span></td>
-                                        @endif
+                                        <td>{{ $item->phone_number }}</td>
+                                        <td>{{ $item->message }}</td>
                                         <td>{{ $item->created_at }}</td>
-                                        <td>{{ $item->updated_at }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

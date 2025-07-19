@@ -61,7 +61,7 @@
                         </div>
                     </div>
                     <div class="row ms-4 me-4">
-                        <form id="frm" action="/login" method="POST">
+                        <form id="frm" action="/admin/login" method="POST">
                             @csrf
                             <div class="row gy-3 gy-md-4 overflow-hidden ps-4 pe-4">
                                 <div class="col-12">
@@ -77,9 +77,14 @@
                                         <button tabindex="-1" class="btn btn-black border-0 text-light" type="button"><i class="fas fa-eye"></i></button>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 col-md-6">
                                     <div class="d-grid">
                                         <button class="btn btn-dark text-light button-title-login" type="submit"><b>Iniciar Sesión</b></button>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="d-grid">
+                                        <a class="btn btn-dark text-light" href="/"><b>Ir a D'GALA</b></a>
                                     </div>
                                 </div>
                                 <div class="col-12 text-center">

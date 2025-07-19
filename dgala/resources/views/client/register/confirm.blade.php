@@ -2,7 +2,7 @@
 @section('content')
     <style>
         .parallax {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.8)), url("../../assets/img/parallax_aboutus.jpg");
+            background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.8)), url("../../assets/img/parallax_register.jpg");
             min-height: 500px;
             background-attachment: fixed;
             background-position: center;
@@ -58,69 +58,25 @@
         <article>
             <div class="row">
                 <div class="col">
-                    <h1 class="display-3 text-center mt-5 text-light fw-bold">Nosotros</h1>
+                    <h1 class="display-3 text-center mt-5 text-light fw-bold">Regístrese</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <p class="fs-5 mt-4 p-4 text-light" align="justify">
-                        D'GALA JOYERIA inicio sus operaciones con una pequeña tienda en el distrito de Puente Piedra en la ciudad de Lima, 
-                        con un equipo joven respaldado por joyeros con décadas de experiencia.
-                        <br /><br />
-                        Nuestra especialidad son los anillos de compromiso y aros de matrimonio, sabemos que ambas son tal vez el regalo 
-                        físico más importante en nuestras vidas.
-                        <br /><br />
-                        Nuestro objetivo es ayudar a nuestros clientes a elegir esa joya soñada, sabemos que una joya no solo es un fragmento 
-                        de metal bien trabajado sino también es un símbolo especial perdurable y un compromiso eterno.
+                    <p class="fs-2 mt-4 p-4 text-light" align="center">
+                        Muchas gracias por registrarse en nuestra plataforma, en breve estaremos enviando un correo de 
+                        verificación de identidad.
                     </p>
                 </div>
             </div>
             <div class="row"><div class="col"><hr class="text-light" /></div></div>
             <div class="row row-cols-1 row-cols-md-3 g-6 p-4">
-                <div class="col col-md-4 p-4">
-                    <div class="overflow-hidden">
-                        <img src="../../assets/resources/mision.jpg" class="card-img-top zoom" />
-                    </div>
-                </div>
-                <div class="col col-md-8 ps-2 pe-2">
-                    <h1 class="display-4 text-light text-center fw-bold mb-5">Misión</h1>
-                    <p class="fs-5 mt-4 text-light" align="justify">
-                        Soñar, diseñar y crear las más bellas joyas. Controlaremos el proceso completo, desde la compra de las gemas hasta la 
-                        joya terminada.
-                    </p>
-                </div>
-            </div>
-            <div class="row"><div class="col"><hr class="text-light" /></div></div>
-            <div class="row row-cols-1 row-cols-md-3 g-6 p-4">
-                <div class="col col-md-8 ps-2 pe-2">
-                    <h1 class="display-4 text-light text-center fw-bold mb-5">Visión</h1>
-                    <p class="fs-5 mt-4 text-light" align="justify">
-                        Nuestro sueño... aportar momentos de felicidad que perduren en el tiempo y que queden ligados a nuestras joyas.
-                    </p>
-                </div>
-                <div class="col col-md-4 p-4">
-                    <div class="overflow-hidden">
-                        <img src="../../assets/resources/vision.jpg" class="card-img-top zoom" />
+                <div class="col col-md-12 p-4">
+                    <div class="mb-3 pt-4">
+                        <a href="/" type="button" class="btn btn-dark bg-gradient w-100 text-light fw-bold p-3"><i class="fas fa-house-user me-2"></i>Volver a la Página Principal</a>
                     </div>
                 </div>
             </div>
-            <div class="row"><div class="col"><hr class="text-light" /></div></div>
-            <div class="row row-cols-1 row-cols-md-3 g-6 p-4">
-                <div class="col col-md-4 p-4">
-                    <div class="overflow-hidden">
-                        <img src="../../assets/resources/valor.jpg" class="card-img-top zoom" />
-                    </div>
-                </div>
-                <div class="col col-md-8 ps-2 pe-2">
-                    <h1 class="display-4 text-light text-center fw-bold mb-5">Valores</h1>
-                    <p class="fs-5 mt-4 text-light" align="justify">
-                        Nuestra joyería como empresa tienen mucho que ver con nuestros valores personales.
-                        <br /><br />
-                        En nuestro abecedario incluimos términos como Compromiso, Seriedad, Calidad, Honestidad, 
-                        Integridad, Confianza y mucha pasión por lo que hacemos.
-                    </p>
-                </div>
-            </div> 
         </article>
     </section>
 @endsection

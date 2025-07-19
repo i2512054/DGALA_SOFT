@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
-    public function adminLogin() {
-        return view('auth.login');
+    public function adminSignIn() {
+        return view('admin.auth.login');
     }
-    public function login(Request $request) {
+    public function adminLogin(Request $request) {
         $credentials = $request->only('email', 'password');
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
@@ -29,15 +29,27 @@ class AuthController extends Controller
                 'name' => $user->name,
                 'email' => $user->email
             ]);
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/admin/dashboard');
         }
         session(['message' => 'Usted no está autorizado a entrar a la Plataforma Administrador']);
         return back()->withErrors(['email' => 'Credenciales incorrectas']);
     }
-    public function logout(Request $request) {
+    public function adminLogout(Request $request) {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+        return redirect('/admin/login');
+    }
+    public function clientSignIn() {
+        return view('client.signin.index');
+    }
+    public function clientLogin(Request $request) {
+        return view('client.signin.index');
+    }
+    public function clientLogout(Request $request) {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/client/login');
     }
 }

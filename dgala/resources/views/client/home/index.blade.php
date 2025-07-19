@@ -1,6 +1,14 @@
-@extends('layouts.app-layout-client')
+@extends('layouts.client.app-layout-website')
 @section('content')
     <style>
+        .parallax {
+            background-image: url("../../assets/img/parallax_dgala.jpg");
+            min-height: 500px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
         .section-ring {
             background-image: url(../../assets/img/dgala_ccrear.png); 
             background-size: cover; 
@@ -13,6 +21,14 @@
             background-repeat: no-repeat;
             padding: 32px 64px 32px 64px;
         }
+        .card-gradient-item { background-image: linear-gradient( 135deg, #ffaf03 20%, #2e0505 100%); }
+        .zoom { transition: transform .5s; }
+        .zoom:hover { transform: scale(1.5); }
+        .room-content { background-color: rgba(20, 20, 20, 0.9); padding:0px 40px; }
+        .room-content h3{ color: #FAB702; font-size: 17px; font-weight:400; letter-spacing: 3px; text-transform: uppercase; }
+        .room-content p{ margin: 0 0 10px; font-size:13px; font-weight: 400; color: #ddd; letter-spacing: 1px; line-height: 1.8em; }
+        .dgala-prod { color:#4d2e00; }
+        .section-bg-01 { background-color: rgba(20, 20, 20, 1); }
     </style>
     <section>
         <article>

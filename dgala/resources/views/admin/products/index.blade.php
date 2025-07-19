@@ -1,4 +1,4 @@
-@extends('layouts.app-layout-admin')
+@extends('layouts.admin.app-layout-admin')
 @section('role', session('role_name'))
 @section('title', 'Productos')
 @section('content')
@@ -6,7 +6,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <a href="/products/add" class="btn btn-primary"><i class="fas fa-plus me-2"></i>Agregar Producto</a>
+                <a href="/admin/products/add" class="btn btn-primary"><i class="fas fa-plus me-2"></i>Agregar Producto</a>
             </div>
         </div>
     </div>
@@ -51,9 +51,9 @@
                             <tbody>
                                 @foreach ($products as $item)
                                     <tr>
-                                        <td><a href="/products/{{ $item->id }}/edit" class="btn btn-dark bg-gradient"><i class="fas fa-pen"></i></a></td>
+                                        <td><a href="/admin/products/{{ $item->id }}/edit" class="btn btn-dark bg-gradient"><i class="fas fa-pen"></i></a></td>
                                         <td>
-                                            <form action="/products/{{ $item->id }}" method="POST">
+                                            <form action="/admin/products/{{ $item->id }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger bg-gradient"><i class="fas fa-trash"></i></button>
