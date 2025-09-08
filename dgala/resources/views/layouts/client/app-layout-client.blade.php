@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../../assets/lib/bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="../../assets/lib/fontawesome/css/all.css" />
         <link rel="stylesheet" type="text/css" href="../../assets/lib/twentytwenty/css/twentytwenty.css">
+        <link rel="stylesheet" type="text/css" href="../../assets/lib/rangeSlider/css/rSlider.min.css">
         <title>D'Gala</title>
         <style>
             body { margin: 0; padding: 0; overflow-x: hidden; }
@@ -40,11 +41,22 @@
                         <div class="row">
                             <div class="col">
                                 <div class="hstack mt-4 me-4 mb-2">
-                                    <div class="p-1 text-light"><a href="/register" class="link-underline-dark text-light"><i class="fas fa-address-card me-2"></i>Registrese</a></div>
+                                    <div class="p-1 text-light">
+                                        <a href="/" class="btn link-underline-dark text-light"><i class="fas fa-house me-2"></i>Ir a D'GALA</a>
+                                    </div>
                                     <div class="p-1 text-light">|</div>
-                                    <div class="p-1 text-light"><a href="/signin" class="link-underline-dark text-light"><i class="fas fa-user-lock me-2"></i>Login</a></div>
+                                    <div class="p-1 text-light ms-3 me-3"><a href="/carts" class="link-underline-dark text-light"><i class="fas fa-cart-shopping me-2"></i>Carrito</a></div>
                                     <div class="p-1 text-light">|</div>
-                                    <div class="p-1 text-light"><a href="/shopping" class="link-underline-dark text-light"><i class="fas fa-cart-shopping me-2"></i>Compras</a></div>
+                                    <div class="p-1 text-light">
+                                        <button type="button" class="btn link-underline-dark text-light"><i class="fas fa-user-large me-2"></i>{{ session('customer_email') }}</button>
+                                    </div>
+                                    <div class="p-1 text-light">|</div>
+                                    <div class="p-1 text-light">
+                                        <form action="/client/logout" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn link-underline-dark text-light"><i class="fas fa-power-off me-2"></i>Cerrar sesión</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -61,11 +73,11 @@
                     <div class="d-flex justify-content-center w-100">
                         <div class="mb-lg-0">
                             <ul class="navbar-nav">
-                                <li class="nav-item fw-bold me-5 align-self-center"><a class="text-light nav-link active" href="/" aria-current="page">Inicio</a></li>
-                                <li class="nav-item fw-bold me-5 align-self-center"><a class="text-light nav-link" href="/aboutus">Nosotros</a></li>
-                                <li class="nav-item fw-bold me-5 align-self-center"><a class="text-light nav-link" href="/catalog">Productos</a></li>
-                                <li class="nav-item fw-bold me-5 align-self-center"><a class="text-light nav-link" href="/service">Servicios</a></li>
-                                <li class="nav-item fw-bold me-5 align-self-center"><a class="text-light nav-link " href="/contactus">Contáctenos</a></li>
+                                <li class="nav-item fw-bold me-5 align-self-center"><a class="text-light nav-link active" href="{{ route('client.dashboard') }}" aria-current="page">Inicio</a></li>
+                                <li class="nav-item fw-bold me-5 align-self-center"><a class="text-light nav-link" href="{{ route('client.account') }}">Cuenta</a></li>
+                                <li class="nav-item fw-bold me-5 align-self-center"><a class="text-light nav-link" href="{{ route('client.invoice') }}">Compras</a></li>
+                                <li class="nav-item fw-bold me-5 align-self-center"><a class="text-light nav-link" href="{{ route('client.tracking') }}">Seguimiento</a></li>
+                                <!--<li class="nav-item fw-bold me-5 align-self-center"><a class="text-light nav-link " href="#">Servicios</a></li>-->
                             </ul>
                         </div>
                     </div>
@@ -74,7 +86,7 @@
         </nav>
         <main>
             @yield('content')
-            <section class="bg-black">
+            <!--<section class="bg-black">
                 <article>
                     <div class="row p-5">
                         <div class="col-12 col-md-5">
@@ -130,7 +142,7 @@
                         </div>
                     </div>
                 </article>
-            </section>
+            </section>-->
         </main>
         <footer>
             <div class="row">
@@ -145,8 +157,10 @@
 <script src="../../assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="../../assets/lib/twentytwenty/js/jquery.event.move.js"></script>
 <script src="../../assets/lib/twentytwenty/js/jquery.twentytwenty.js"></script>
+<script src="../../assets/lib/rangeSlider/js/rSlider.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $("#before-after,#before-after2").twentytwenty();
     });
 </script>
+@yield('scripts')

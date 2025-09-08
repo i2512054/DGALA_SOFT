@@ -63,6 +63,9 @@
                         </table>
                     @endif
                 </div>
+                <div class="d-flex custom-pagination justify-content-center">
+                    {{ $users->appends(request()->query())->links('vendor.pagination.bootstrap-5') }}
+                </div>
             </div>
         </div>
     </div>

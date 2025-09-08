@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../../assets/lib/bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="../../assets/lib/fontawesome/css/all.css" />
         <link rel="stylesheet" type="text/css" href="../../assets/lib/twentytwenty/css/twentytwenty.css">
+        <link rel="stylesheet" type="text/css" href="../../assets/lib/rangeSlider/css/rSlider.min.css">
         <title>D'Gala</title>
         <style>
             body { margin: 0; padding: 0; overflow-x: hidden; }
@@ -24,11 +25,24 @@
                         <div class="row">
                             <div class="col">
                                 <div class="hstack mt-4 me-4 mb-2">
-                                    <div class="p-1 text-light"><a href="/register" class="link-underline-dark text-light"><i class="fas fa-address-card me-2"></i>Registrese</a></div>
-                                    <div class="p-1 text-light">|</div>
-                                    <div class="p-1 text-light"><a href="/client/signin" class="link-underline-dark text-light"><i class="fas fa-user-lock me-2"></i>Login</a></div>
-                                    <div class="p-1 text-light">|</div>
-                                    <div class="p-1 text-light"><a href="/shopping" class="link-underline-dark text-light"><i class="fas fa-cart-shopping me-2"></i>Compras</a></div>
+                                    @if (session('customer_id'))
+                                        <div class="p-1 text-light me-3"><a href="/carts" class="link-underline-dark text-light"><i class="fas fa-cart-shopping me-2"></i>Carrito</a></div>
+                                        <div class="p-1 text-light">|</div>
+                                        <div class="p-1 text-light ms-3 me-3"><a href="/client/dashboard" class="link-underline-dark text-light"><i class="fas fa-address-card me-2"></i>{{ session('customer_email') }}</a></div>
+                                        <div class="p-1 text-light">|</div>
+                                        <div class="p-1 text-light">
+                                            <form action="/client/logoutWeb" method="POST">
+                                                @csrf
+                                                <button type="submit" class="btn link-underline-dark text-light"><i class="fas fa-power-off me-2"></i>Cerrar sesión</button>
+                                            </form>
+                                        </div>
+                                    @else
+                                        <div class="p-1 text-light me-3"><a href="/carts" class="link-underline-dark text-light"><i class="fas fa-cart-shopping me-2"></i>Carrito</a></div>    
+                                        <div class="p-1 text-light">|</div>
+                                        <div class="p-1 text-light ms-3 me-3"><a href="/register" class="link-underline-dark text-light"><i class="fas fa-address-card me-2"></i>Registrese</a></div>
+                                        <div class="p-1 text-light">|</div>
+                                        <div class="p-1 text-light ms-3"><a href="/client/signin" class="link-underline-dark text-light"><i class="fas fa-user-lock me-2"></i>Login</a></div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -129,8 +143,12 @@
 <script src="../../assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="../../assets/lib/twentytwenty/js/jquery.event.move.js"></script>
 <script src="../../assets/lib/twentytwenty/js/jquery.twentytwenty.js"></script>
+<script src="../../assets/lib/rangeSlider/js/rSlider.min.js"></script>
+<!--<script src="../../assets/js/plugins/plugins.js"></script>-->
+<script src="../../assets/lib/inputMask/inputmask.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $("#before-after,#before-after2").twentytwenty();
     });
 </script>
+@yield('scripts')

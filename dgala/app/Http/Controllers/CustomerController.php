@@ -18,7 +18,7 @@ class CustomerController extends Controller
                 'c.access', 'c.ind_status', 'c.created_at', 'c.updated_at'
             )
             ->join('document_types AS dt', 'dt.id', '=', 'c.document_type_id')
-            ->get();
+            ->paginate(6);
         return view('admin.customers.index', compact('customers'));
     }
     function add() {//METODO PARA INVOCAR A LA VISTA DE CREAR CLIENTE
@@ -43,7 +43,7 @@ class CustomerController extends Controller
         $customer->access = $request->access;
         $customer->ind_status = 1;
         $customer->save();
-        return redirect('/customers');
+        return redirect('/admin/customers');
     }
     function edit($id) {//METODO PARA INVOCAR A LA VISTA DE EDITAR CLIENTE
         $documentTypes = DocumentType::all();
@@ -79,13 +79,13 @@ class CustomerController extends Controller
         //$customer->access = $request->access;
         $customer->ind_status = 1;
         $customer->save();
-        return redirect('/customers');
+        return redirect('/admin/customers');
     }
     function destroy($id) {//METODO PARA ELIMINAR UN CLIENTE SELECCIONADO
         $customer = Customer::find($id);
         //$customer->delete();
         $customer->ind_status = 0;
         $customer->save();
-        return redirect('/customers');
+        return redirect('/admin/customers');
     }
 }

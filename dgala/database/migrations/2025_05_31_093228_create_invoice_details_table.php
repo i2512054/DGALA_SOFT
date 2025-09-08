@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('invoice_details', function (Blueprint $table) {
             $table->id();
-            $table->string('invoice_id', length: 10);
+            $table->string('invoice_id', length: 13);
             $table->integer('product_id');
             $table->integer('service_id');
             $table->decimal('price', total: 10, places: 2);

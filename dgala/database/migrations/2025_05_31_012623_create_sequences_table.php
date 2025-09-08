@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('sequences', function (Blueprint $table) {
             $table->tinyIncrements('id');
             $table->string('type', length: 1);
-            $table->string('correlative', length: 10);
+            $table->string('correlative', length: 13);
             $table->boolean('ind_status');
             $table->timestamps();
         });

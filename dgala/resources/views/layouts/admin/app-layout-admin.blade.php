@@ -9,13 +9,13 @@
 	    <meta name="robots" content="">
         <title>DGALA: Administrador</title>
 	    <!-- FAVICONS ICON -->
-	    <link rel="shortcut icon" type="image/png" href="../../assets/resources/favicon.svg">
-        <link rel="stylesheet" href="../../assets/vendor/select2/css/select2.min.css">
-	    <link href="../../assets/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
-	    <link href="../../assets/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
-	    <link rel="stylesheet" href="../../assets/vendor/nouislider/nouislider.min.css">
+	    <link rel="shortcut icon" type="image/png" href="@yield('path', '../../')assets/resources/favicon.svg">
+        <link rel="stylesheet" href="@yield('path', '../../')assets/vendor/select2/css/select2.min.css">
+	    <link href="@yield('path', '../../')assets/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+	    <link href="@yield('path', '../../')assets/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
+	    <link rel="stylesheet" href="@yield('path', '../../')assets/vendor/nouislider/nouislider.min.css">
 	    <!-- Style css -->
-        <link href="../../assets/css/style.css" rel="stylesheet">
+        <link href="@yield('path', '../../')assets/css/style.css" rel="stylesheet">
     </head>
     <body>
         <!-- INIT: Preloader start -->
@@ -27,7 +27,7 @@
             <!-- INIT: Nav header start -->
             <div class="nav-header" style="background-color: black; border: 0;">
                 <a href="/admin/dashboard" class="brand-logo">
-                    <img src="../../assets/resources/favicon.svg" width="55" height="55" class="logo-abbr" />
+                    <img src="@yield('path', '../../')assets/resources/favicon.svg" width="55" height="55" class="logo-abbr" />
 				    <div class="brand-title">
 					    <h2 class="">D'GALA</h2>
 					    <span class="brand-sub-title">@yield('role')</span>
@@ -51,7 +51,7 @@
                         <ul class="navbar-nav header-right">
 							<li class="nav-item dropdown  header-profile">
 								<a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
-									<img src="../../assets/images/user.jpg" width="56" alt="">
+									<img src="@yield('path', '../../')assets/images/user.jpg" width="56" alt="">
 								</a>
 								<div class="dropdown-menu dropdown-menu-end" style="background-color: black;">
 									<a href="#" class="dropdown-item ai-icon">
@@ -96,6 +96,7 @@
                         <li><a href="/admin/users" class="" aria-expanded="false"><i class="fas fa-user"></i><span class="nav-text">Usuarios</span></a></li>
                         <li><a href="/admin/tools" class="" aria-expanded="false"><i class="fas fa-server"></i><span class="nav-text">Configuración</span></a></li>
                         <li><a href="/admin/messages" class="" aria-expanded="false"><i class="fas fa-envelope"></i><span class="nav-text">Mensajes</span></a></li>
+                        <li><a href="#" class="" aria-expanded="false"><i class="fas fa-images"></i><span class="nav-text">Sliders</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -121,22 +122,22 @@
     </body>
 </html>
 <!-- Required vendors -->
-<script src="../../assets/vendor/global/global.min.js"></script>
-<script src="../../assets/vendor/chart.js/Chart.bundle.min.js"></script>
-<script src="../../assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
-<script src="../../assets/vendor/select2/js/select2.full.min.js"></script>
+<script src="@yield('path', '../../')assets/vendor/global/global.min.js"></script>
+<script src="@yield('path', '../../')assets/vendor/chart.js/Chart.bundle.min.js"></script>
+<script src="@yield('path', '../../')assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+<script src="@yield('path', '../../')assets/vendor/select2/js/select2.full.min.js"></script>
 <!-- Apex Chart -->
-<script src="../../assets/vendor/apexchart/apexchart.js"></script>
-<script src="../../assets/vendor/chart.js/Chart.bundle.min.js"></script>
+<script src="@yield('path', '../../')assets/vendor/apexchart/apexchart.js"></script>
+<script src="@yield('path', '../../')assets/vendor/chart.js/Chart.bundle.min.js"></script>
 <!-- Chart piety plugin files -->
-<script src="../../assets/vendor/peity/jquery.peity.min.js"></script>
+<script src="@yield('path', '../../')assets/vendor/peity/jquery.peity.min.js"></script>
 <!-- Dashboard 1 -->
-<script src="../../assets/js/dashboard/dashboard-1.js"></script>
-<script src="../../assets/vendor/owl-carousel/owl.carousel.js"></script>
-<script src="../../assets/js/custom.min.js"></script>
-<script src="../../assets/js/dlabnav-init.js"></script>
-<script src="../../assets/js/demo.js"></script>
-<script src="../../assets/js/styleSwitcher.js"></script>
+<script src="@yield('path', '../../')assets/js/dashboard/dashboard-1.js"></script>
+<script src="@yield('path', '../../')assets/vendor/owl-carousel/owl.carousel.js"></script>
+<script src="@yield('path', '../../')assets/js/custom.min.js"></script>
+<script src="@yield('path', '../../')assets/js/dlabnav-init.js"></script>
+<script src="@yield('path', '../../')assets/js/demo.js"></script>
+<script src="@yield('path', '../../')assets/js/styleSwitcher.js"></script>
 <script>
     function cardsCenter() {
         jQuery('.card-slider').owlCarousel({
@@ -161,3 +162,4 @@
         //onChangeThemeDGala('dark');
     });
 </script>
+@yield('scripts')

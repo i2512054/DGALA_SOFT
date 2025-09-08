@@ -28,6 +28,6 @@ class AccountController extends Controller
             $roleName = "Operador";
         }
         session(['id' => $account->id, 'role_id' => $account->role_id, 'role_name' => $roleName, 'name' => $account->name, 'email' => $account->email]);
-        return redirect('/dashboard');
+        return redirect('admin/dashboard');
     }
 }

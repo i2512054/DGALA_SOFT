@@ -75,25 +75,6 @@
                 @csrf
                 <input type="hidden" name="ubigeo_id" id="ubigeo_id" />
                 <div class="row g-6 p-4">
-                    <div class="col-12 col-md-6">
-                        <div class="mb-3">
-                            <label class="form-label text-light">Tipo Documento</label>
-                            <select class="form-select" id="document_type_id" name="document_type_id" required>
-                                <option value="" selected>Seleccione Tipo de Documento</option>
-                                @foreach ($documentTypes as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>    
-                                @endforeach
-                            </select>
-                            <div class="invalid-feedback fw-bold">Por favor seleccione el tipo de documento.</div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="mb-3">
-                            <label class="form-label text-light">Número de Documento</label>
-                            <input type="text" class="form-control" id="document_number" name="document_number" required />
-                            <div class="invalid-feedback fw-bold">Por favor especifique el número de documento.</div>
-                        </div>
-                    </div>
                     <div class="col-12 col-md-4">
                         <div class="mb-3">
                             <label class="form-label text-light">Nombres</label>
@@ -129,14 +110,14 @@
                             <div class="invalid-feedback fw-bold">Por favor especifique su número de teléfono.</div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <!--<div class="col-12 col-md-4">
                         <div class="mb-3">
                             <label class="form-label text-light">Departamento</label>
                             <select class="form-select" id="department_code" name="department_code" onchange="loadProvince();" required>
                                 <option value="" selected>Seleccione Departamento</option>
-                                @foreach ($ubigeos as $item)
-                                    <option value="{{ $item->department_code }}">{{ $item->description }}</option>
-                                @endforeach
+                                {{-- @foreach ($ubigeos as $item) --}}
+                                    <option value="{{-- $item->department_code --}}">{{--  --}}</option>
+                                {{-- @endforeach --}}
                             </select>
                             <div class="invalid-feedback fw-bold">Por favor seleccione el departamento.</div>
                         </div>
@@ -165,7 +146,7 @@
                             <input type="text" class="form-control" id="address" name="address" required />
                             <div class="invalid-feedback fw-bold">Por favor especifique su domicilio.</div>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="col-12 col-md-4">
                         <div class="mb-3">
                             <label class="form-label text-light">Contraseña</label>

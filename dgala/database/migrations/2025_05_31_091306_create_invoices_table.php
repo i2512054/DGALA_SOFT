@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('invoices', function (Blueprint $table) {
-            $table->string('id', length: 10);
+            $table->string('id', length: 13);
             $table->integer('customer_id');
             $table->string('type', length: 1);
             $table->date('issued_at');

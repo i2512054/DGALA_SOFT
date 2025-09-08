@@ -1,4 +1,5 @@
 @extends('layouts.admin.app-layout-admin')
+@section('path', '../../../')
 @section('role', session('role_name'))
 @section('title', 'Editar Categoría')
 @section('content')

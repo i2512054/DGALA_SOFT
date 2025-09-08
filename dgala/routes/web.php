@@ -3,11 +3,14 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DeliveryTrackController;
 use App\Http\Controllers\DGALAController;
+use App\Http\Controllers\PdfGeneratorController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SaleController;
@@ -17,20 +20,50 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 //RUTAS PARA EL SITIO WEB D'GALA
-Route::get('/', [DGALAController::class, 'index']);
+Route::get('/', [DGALAController::class, 'index'])->name('home');
 Route::get('/aboutus', [DGALAController::class, 'aboutUs']);
-Route::get('/catalog', [DGALAController::class, 'catalog']);
+Route::get('/catalog', [DGALAController::class, 'catalog'])->name('catalog');
+Route::get('/catalog/{id}', [DGALAController::class, 'catalogDetail'])->name('catalog.detail');
+Route::post('/catalog/filter', [DGALAController::class, 'catalogFilter'])->name('catalog.filter');
 Route::get('/service', [DGALAController::class, 'service']);
 Route::get('/contactus', [DGALAController::class, 'contactUs']);
 Route::get('/contactus/confirm', [DGALAController::class, 'contactUsConfirm']);
-Route::get('/register', [DGALAController::class, 'register']);
+Route::get('/register', [DGALAController::class, 'register'])->name('register');
 Route::post('/register/create', [DGALAController::class, 'registerConfirm']);
 Route::get('/shopping', [DGALAController::class, 'shopping']);
 
+//RUTAS PARA EL CARRITO DE COMPRAS
+Route::get('/carts', [CartController::class, 'index'])->name('cart.index');
+Route::post('/carts/add', [CartController::class, 'add'])->name('cart.add');
+Route::put('/carts/update', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/carts/remove', [CartController::class, 'remove'])->name('cart.remove');
+Route::delete('/carts/clear', [CartController::class, 'clear'])->name('cart.clear');
+
+//RUTAS PARA LA PASARELLA DE PAGOS
+Route::get('/payment/confirm', [CartController::class, 'paymentStep01'])->name('payment.step01');
+Route::get('/payment/delivery', [CartController::class, 'paymentStep02'])->name('payment.step02');
+Route::post('/payment/delivery/store', [CartController::class, 'paymentStep02Store'])->name('payment.step02.store');
+Route::get('/payment/completed', [CartController::class, 'paymentStep03'])->name('payment.step03');
+Route::post('/payment/completed/store', [CartController::class, 'paymentStep03Store'])->name('payment.step03.store');
+Route::get('/payment/finalized', [CartController::class, 'paymentStep04'])->name('payment.step04');
+Route::get('/payment/invoice/{id}', [CartController::class, 'paymentStep05']);
+
+//RUTAS PARA LA GENERACIÓN DE PDFS
+Route::get('invoice/{id}', [PdfGeneratorController::class, 'index'])->name('invoice.report');
+
 //RUTAS PARA LA AUTENTICACIÓN DE LA PLATAFORMA CLIENTE
-Route::get('/client/signin', [AuthController::class, 'clientSignIn']);
+Route::get('/client/signin', [AuthController::class, 'clientSignIn'])->name('client.signin');
 Route::post('/client/login', [AuthController::class, 'clientLogin']);
-Route::post('/client/logout', [AuthController::class, 'clientLogout']);
+Route::post('/client/logout', [AuthController::class, 'clientLogout'])->name('client.logout');
+Route::post('/client/logoutWeb', [AuthController::class, 'clientLogoutWeb'])->name('web.logout');
+
+//RUTAS PARA LA PLATAFORMA CLIENTE
+Route::get('/client/dashboard', [DGALAController::class, 'dashboard'])->name('client.dashboard');
+Route::get('/client/account/', [DGALAController::class, 'account'])->name('client.account');
+Route::put('/client/account/update/{id}', [DGALAController::class, 'accountUpdate']);
+Route::put('/client/account/password/{id}', [DGALAController::class, 'accountPassword']);
+Route::get('/client/invoice', [DGALAController::class, 'invoice'])->name('client.invoice');
+Route::get('/client/tracking', [DGALAController::class, 'tracking'])->name('client.tracking');
 
 //RUTAS PARA LA AUTENTICACIÓN DE LA PLATAFORMA ADMINISTRADOR
 Route::get('/admin/login', [AuthController::class, 'adminSignIn'])->name('login');
@@ -91,3 +124,6 @@ Route::get('/ubigeos/districts/{department_code}/{province_code}', [UbigeoContro
 
 //RUTAS PARA EL CONTROL DE ENVIO DE MENSAJES PARA EL FORMULARIO CONTACTENOS
 Route::post('/contacts', [ContactController::class, 'store']);
+
+//RUTAS PARA CONSULTAR TRACKING DE ENVIO
+Route::get('/invoiceTracks/detail/{id}', [DeliveryTrackController::class, 'search']);

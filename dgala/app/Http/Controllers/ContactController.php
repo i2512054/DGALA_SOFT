@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ContactController extends Controller
 {
     function index() {
-        $contacts = Contact::all();
+        $contacts = DB::table('contacts')->paginate(6);
         return view('admin.messages.index', compact('contacts'));
     }
     function store(Request $request) {

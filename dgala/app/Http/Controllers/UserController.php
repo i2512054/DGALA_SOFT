@@ -14,7 +14,7 @@ class UserController extends Controller
         $users = DB::table('users AS u')
             ->select('u.id', 'u.role_id', 'r.name AS role_name', 'u.name', 'u.email', 'u.ind_status', 'u.created_at', 'u.updated_at')
             ->join('roles AS r', 'r.id', '=', 'u.role_id')
-            ->get();
+            ->paginate(4);
         return view('admin.users.index', compact('users'));
     }
     function add() {//METODO PARA INVOCAR A LA VISTA DE CREAR USUARIO
@@ -29,7 +29,7 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->ind_status = 1;
         $user->save();
-        return redirect('/users');
+        return redirect('admin/users');
     }
     function edit($id) {//METODO PARA INVOCAR A LA VISTA DE EDITAR USUARIO
         $roles = Role::all();
@@ -44,12 +44,12 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->ind_status = 1;
         $user->save();
-        return redirect('/users');
+        return redirect('admin/users');
     }
     function destroy($id) {//METODO PARA ELIMINAR UN CLIENTE SELECCIONADO
         $user = User::find($id);
         $user->ind_status = 0;
         $user->save();
-        return redirect('/users');
+        return redirect('admin/users');
     }
 }

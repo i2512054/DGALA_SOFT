@@ -16,7 +16,7 @@ class CategoryController extends Controller
                 'c.link_image', 'c.ind_level', 'c.ind_status', 'c.created_at', 'c.updated_at'
             )
             ->join('categories AS cp', 'cp.id', '=', 'c.category_id')
-            ->get();
+            ->paginate(6);
         return view('admin.categories.index', compact('categories'));
     }
     function add() {//METODO PARA INVOCAR A LA VISTA DE CREAR CATEGORIA
@@ -36,7 +36,7 @@ class CategoryController extends Controller
         $category->ind_status = 1;
         if($request->hasFile('image')) { $category->link_image = Storage::put('categories', $request->image); }
         $category->save();
-        return redirect('/categories');
+        return redirect('/admin/categories');
     }
     function edit($id) {//METODO PARA INVOCAR A LA VISTA DE EDITAR CATEGORIA
         $categoriesParent = DB::table('categories')
@@ -59,7 +59,7 @@ class CategoryController extends Controller
             $category->link_image = Storage::put('categories', $request->image);
         }
         $category->save();
-        return redirect('/categories');
+        return redirect('/admin/categories');
     }
     function destroy($id) {//METODO PARA ELIMINAR UNA CATEGORIA SELECCIONADA
         $category = Category::find($id);
@@ -67,6 +67,6 @@ class CategoryController extends Controller
         //$category->delete();
         $category->ind_status = 0;
         $category->save();
-        return redirect('/categories');
+        return redirect('/admin/categories');
     }
 }

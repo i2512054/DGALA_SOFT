@@ -21,9 +21,13 @@
             background-repeat: no-repeat;
             padding: 32px 64px 32px 64px;
         }
-        .card-gradient-item { background-image: linear-gradient( 135deg, #ffaf03 20%, #2e0505 100%); }
+        .card-gradient-item { background-image: linear-gradient( 135deg, #f3ba00 20%, #ffaf03 100%); }
         .zoom { transition: transform .5s; }
         .zoom:hover { transform: scale(1.5); }
+
+        .zoomCart { transition: transform .5s; height: 90px; }
+        .zoomCart:hover { transform: scale(1.5); }
+
         .room-content { background-color: rgba(20, 20, 20, 0.9); padding:0px 40px; }
         .room-content h3{ color: #FAB702; font-size: 17px; font-weight:400; letter-spacing: 3px; text-transform: uppercase; }
         .room-content p{ margin: 0 0 10px; font-size:13px; font-weight: 400; color: #ddd; letter-spacing: 1px; line-height: 1.8em; }
@@ -126,45 +130,28 @@
                 </div>
             </div>
             <div class="row row-cols-1 row-cols-md-3 g-6 p-4">
-                <div class="col p-4">
-                    <div class="card border border-0 m-4">
-                        <img src="../../assets/img/prod/01.png" class="card-img-top" />
-                        <div class="card-body card-gradient-item">
-                            <p class="card-text p-4 fw-bold dgala-prod">
-                                Anillo de Compromiso Corazón Plata 925
-                            </p>
-                            <div class="mt-3 mb-3 text-center">
-                                <button class="btn bg-black"><span class="fs-3 p-2 text-light">S/. 159.00</span></button>
+                @foreach($products as $item)
+                    <div class="col p-4">
+                        <div class="card border border-0 m-4">
+                            <div class="overflow-hidden">
+                                <img src="{{ Storage::url($item->link_image) }}" class="card-img-top zoom" />
+                            </div>
+                            <div class="card-body text-center" style="height: 100px;">
+                                <p class="card-text p-4 fw-bold dgala-prod">{{ $item->name }}</p>
+                            </div>
+                            <div class="card-footer border border-0 text-center card-gradient-item pb-4">
+                                <div class="mt-3 mb-3 text-center">
+                                    <p class="fs-4 fw-bold">S/. {{ number_format($item->sales_price, 2) }}</p>
+                                    <form action="{{ route('cart.add') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $item->id }}" />
+                                        <button type="submit" class="btn btn-dark bg-gradient w-100"><i class="fas fa-cart-plus me-2"></i>Agregar al Carrito</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col p-4">
-                    <div class="card border border-0 m-4">
-                        <img src="../../assets/img/prod/02.png" class="card-img-top" />
-                        <div class="card-body card-gradient-item">
-                            <p class="card-text p-4 fw-bold dgala-prod">
-                                Florero Nuvó Martillado Fino Plaqué
-                            </p>
-                            <div class="mt-3 mb-3 text-center">
-                                <button class="btn bg-black"><span class="fs-3 p-2 text-light">S/. 257.40</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col p-4">
-                    <div class="card border border-0 m-4">
-                        <img src="../../assets/img/prod/03.png" class="card-img-top" />
-                        <div class="card-body card-gradient-item">
-                            <p class="card-text p-4 fw-bold dgala-prod" >
-                                Juego Tamsin Patinado de Plata 950
-                            </p>
-                            <div class="mt-3 mb-3 text-center">
-                                <button class="btn bg-black"><span class="fs-3 p-2 text-light">S/. 274.55</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </article>
     </section>

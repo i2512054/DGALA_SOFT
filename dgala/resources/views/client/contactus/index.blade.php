@@ -76,27 +76,27 @@
                         @csrf
                         <div class="mb-3">
                             <label class="form-label text-light">Nombres</label>
-                            <input type="text" class="form-control" id="name" name="name" required />
+                            <input type="text" class="form-control" id="name" name="name" maxlength="100" required />
                             <div class="invalid-feedback fw-bold">Por favor especifique sus Nombres.</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label text-light">Apellidos</label>
-                            <input type="text" class="form-control" id="last_name" name="last_name" required />
+                            <input type="text" class="form-control" id="last_name" name="last_name" maxlength="100" required />
                             <div class="invalid-feedback fw-bold">Por favor especifique sus Apellidos.</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label text-light">Correo Electrónico</label>
-                            <input type="email" class="form-control" id="email" name="email" required />
+                            <input type="email" class="form-control" id="email" name="email" maxlength="255" required />
                             <div class="invalid-feedback fw-bold">Por favor especifique su Correo Electrónico.</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label text-light">Teléfono</label>
-                            <input type="number" class="form-control" id="phone_number" name="phone_number" required />
+                            <input type="number" class="form-control" id="phone_number" name="phone_number" required oninput="limitNumberLength(this, 25);"> />
                             <div class="invalid-feedback fw-bold">Por favor especifique su Número de Teléfono.</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label text-light">Mensaje</label>
-                            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                            <textarea class="form-control" id="message" name="message" rows="4" maxlength="500" required></textarea>
                             <div class="invalid-feedback fw-bold">Por favor especifique su Mensaje.</div>
                         </div>
                         <div class="mb-3 pt-4">
@@ -121,5 +121,14 @@
                 }, false)
             })
         })()
+    </script>
+@endsection
+@section('scripts')
+    <script>
+        function limitNumberLength(element, maxLength) {
+            if (element.value.length > maxLength) {
+                element.value = element.value.slice(0, maxLength);
+            }
+        }
     </script>
 @endsection

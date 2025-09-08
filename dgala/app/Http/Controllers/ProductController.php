@@ -17,7 +17,7 @@ class ProductController extends Controller
 	            'p.link_image', 'p.created_at', 'p.updated_at'
             )
             ->join('categories AS c', 'c.id', '=', 'p.category_id')
-            ->get();
+            ->paginate(6);
         return view('admin.products.index', compact('products'));
     }
     function add() {//METODO PARA INVOCAR A LA VISTA DE CREAR PRODUCTO
@@ -43,7 +43,7 @@ class ProductController extends Controller
         $product->ind_status = 1;
         if($request->hasFile('image')) { $product->link_image = Storage::put('products', $request->image); }
         $product->save();
-        return redirect('/products');
+        return redirect('/admin/products');
     }
     function edit($id) {//METODO PARA INVOCAR A LA VISTA DE EDITAR PRODUCTO
         $categories = DB::table('categories')
@@ -72,7 +72,7 @@ class ProductController extends Controller
             $product->link_image = Storage::put('products', $request->image);
         }
         $product->save();
-        return redirect('/products');
+        return redirect('/admin/products');
     }
     function destroy($id) {//METODO PARA ELIMINAR UN PRODUCTO SELECCIONADO
         $product = Product::find($id);
@@ -80,6 +80,6 @@ class ProductController extends Controller
         //$product->delete();
         $product->ind_status = 0;
         $product->save();
-        return redirect('/products');
+        return redirect('/admin/products');
     }
 }

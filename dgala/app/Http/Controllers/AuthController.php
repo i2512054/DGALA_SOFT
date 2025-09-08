@@ -44,12 +44,43 @@ class AuthController extends Controller
         return view('client.signin.index');
     }
     public function clientLogin(Request $request) {
-        return view('client.signin.index');
+        $email = $request->email;
+        $password = $request->password;
+        $customers = DB::table('customers')
+            ->where('email', '=', $email)
+            ->where('access', '=', $password)
+            ->get();
+        if(count($customers)) {
+            $customer = $customers[0];
+            session([
+                'message' => 'Bienvenidos a la Plataforma Cliente DGALA',
+                'customer_id' => $customer->id,
+                'customer_first_name' => $customer->first_name,
+                'customer_middle_name' => $customer->middle_name,
+                'customer_last_name' => $customer->last_name,
+                'customer_email' => $customer->email
+            ]);
+            return redirect()->intended('/client/dashboard');
+        }
+        session(['message' => 'Usted no está autorizado a entrar a la Plataforma Cliente DGALA']);
+        return back()->withErrors(['email' => 'Credenciales Incorrectas']);
     }
-    public function clientLogout(Request $request) {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/client/login');
+    public function clientLogout() {
+        session()->forget('message');
+        session()->forget('customer_id');
+        session()->forget('customer_first_name');
+        session()->forget('customer_middle_name');
+        session()->forget('customer_last_name');
+        session()->forget('customer_email');
+        return redirect('/client/signin');
+    }
+    public function clientLogoutWeb() {
+        session()->forget('message');
+        session()->forget('customer_id');
+        session()->forget('customer_first_name');
+        session()->forget('customer_middle_name');
+        session()->forget('customer_last_name');
+        session()->forget('customer_email');
+        return back()->with(['info' => 'Sesion de cliente finalizada']);
     }
 }
